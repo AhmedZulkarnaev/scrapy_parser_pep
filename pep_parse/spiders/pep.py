@@ -7,7 +7,7 @@ from pep_parse.constants import domain
 class PepSpider(scrapy.Spider):
     name = 'pep'
     allowed_domains = [domain]
-    start_urls = ['https://' + domain]
+    start_urls = ['https://' + domain + '/']
 
     def parse(self, response):
         peps = response.css('a::attr(href)').re(r'pep-\d{4}/')
