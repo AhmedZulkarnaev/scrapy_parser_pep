@@ -1,12 +1,13 @@
 import scrapy
 
 from pep_parse.items import PepParseItem
+from pep_parse.constants import domain
 
 
 class PepSpider(scrapy.Spider):
     name = 'pep'
-    allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+    allowed_domains = [domain]
+    start_urls = ['https://' + domain]
 
     def parse(self, response):
         peps = response.css('a::attr(href)').re(r'pep-\d{4}/')
